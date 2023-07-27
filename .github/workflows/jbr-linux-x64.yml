@@ -50,7 +50,7 @@ jobs:
         fi
 
         echo "JBSDK Version: $JBSDK_VERSION"
-        echo "BSDK_VERSION=$JBSDK_VERSION" >> $GITHUB_OUTPUT
+        echo "JBSDK_VERSION=$JBSDK_VERSION" >> $GITHUB_OUTPUT
         echo "Build Number: $build_number"
         echo "build_number=$build_number" >> $GITHUB_OUTPUT
 
