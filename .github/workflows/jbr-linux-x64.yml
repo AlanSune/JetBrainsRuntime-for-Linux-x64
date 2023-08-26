@@ -1,6 +1,8 @@
 name: jbr-linux-x64
 
 on:
+  schedule:
+    - cron:  '30 0 1 * *'
   workflow_dispatch:
     inputs:
       release_id:
