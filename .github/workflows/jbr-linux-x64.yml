@@ -46,7 +46,7 @@ jobs:
         echo "Tag: $tag_name"
         echo "tag_name=$tag_name" >> $GITHUB_OUTPUT
 
-        if [[ "$tag_name" == jbr-release-.* ]]; then
+        if [[ "$tag_name" == jbr-release-* ]]; then
           JBSDK_VERSION=$(sed -E 's/^jbr-release-([0-9_.]+)b.*$/\1/' <<< "$tag_name")
           build_number=$(sed -E 's/^jbr-release-[0-9_.]+b([0-9.]+)$/\1/' <<< "$tag_name")
         elif [[ "$tag_name" == jbr* ]]; then
