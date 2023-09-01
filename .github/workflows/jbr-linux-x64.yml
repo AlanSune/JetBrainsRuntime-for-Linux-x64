@@ -17,8 +17,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
+    - name: Install JDK20
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '20'
+
     - name: Clone Repository
       uses: actions/checkout@v3
 
@@ -40,12 +46,12 @@ jobs:
         echo "Tag: $tag_name"
         echo "tag_name=$tag_name" >> $GITHUB_OUTPUT
 
-        if [[ "$tag_name" == jbr17* ]]; then
-          JBSDK_VERSION=$(sed -E 's/^jbr([0-9_.]+)b.*$/\1/' <<< "$tag_name")
-          build_number=$(sed -E 's/^jbr[0-9_.]+b([0-9.]+)$/\1/' <<< "$tag_name")
-        elif [[ "$tag_name" == jbr-release-17.* ]]; then
+        if [[ "$tag_name" == jbr-release-* ]]; then
           JBSDK_VERSION=$(sed -E 's/^jbr-release-([0-9_.]+)b.*$/\1/' <<< "$tag_name")
           build_number=$(sed -E 's/^jbr-release-[0-9_.]+b([0-9.]+)$/\1/' <<< "$tag_name")
+        elif [[ "$tag_name" == jbr* ]]; then
+          JBSDK_VERSION=$(sed -E 's/^jbr([0-9_.]+)b.*$/\1/' <<< "$tag_name")
+          build_number=$(sed -E 's/^jbr[0-9_.]+b([0-9.]+)$/\1/' <<< "$tag_name")
         else
           echo unknown tag name: $tag_name
           exit 1
@@ -67,10 +73,8 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo apt-get update
-        sudo apt-get install --only-upgrade apt
-        sudo apt-get install gcc-10 g++-10 libxrandr-dev libxtst-dev libcups2-dev libasound2-dev 
-        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
+        sudo apt update
+        sudo apt install -y autoconf make build-essential libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libxrandr-dev libcups2-dev libfontconfig1-dev libasound2-dev libwayland-dev
     - name: Prepare JCEF
       run: |
         aria2c -o jbrsdk_jcef.tgz 'https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_jcef-${{ steps.vars.outputs.JBSDK_VERSION }}-linux-x64-b${{ steps.vars.outputs.build_number }}.tar.gz'
@@ -97,7 +101,7 @@ jobs:
 
         mv ../jcef_linux_x64 ./
 
-        export BOOT_JDK="$JAVA_HOME_17_X64"
+        export BOOT_JDK="$JAVA_HOME"
 
         jb/project/tools/linux/scripts/mkimages_x64.sh '${{ steps.vars.outputs.build_number }}' jcef
 
