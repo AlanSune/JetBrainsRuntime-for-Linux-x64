@@ -74,7 +74,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         sudo apt update
-        sudo apt install autoconf make build-essential libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libxrandr-dev libcups2-dev libfontconfig1-dev libasound2-dev
+        sudo apt install -y autoconf make build-essential libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev libxrandr-dev libcups2-dev libfontconfig1-dev libasound2-dev libwayland-dev
     - name: Prepare JCEF
       run: |
         aria2c -o jbrsdk_jcef.tgz 'https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_jcef-${{ steps.vars.outputs.JBSDK_VERSION }}-linux-x64-b${{ steps.vars.outputs.build_number }}.tar.gz'
