@@ -1,13 +1,11 @@
 # fock说明
 原地址大佬目前没有继续更新，而github基于ubuntu18.04的workflow一直处于等待，无法生成新包。  
-本项目增加ubuntu22.04的支持，生成最新项目，可以在[release](https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases)页面下载使用。  
-## 特别提醒
-本项目打包都带**pre-release**标签，理论上都可以正常使用，有问题直接issue即可。  
+本项目增加ubuntu20.04的支持，生成最新项目，可以在[release](https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases)页面下载使用。  
+### 更新记录
+- 2023.09.04: 修改readme文档。
+- 2023.09.02: 支持jdk21打包；使用ubuntu20.04进行编译；每月1日自动打包。
 
-# 原项目的README 
-原项目地址：https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64
--
-## JetBrainsRuntime-for-Linux-x64  
+# [原项目](https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64)
 利用 Github Actions 每月 1 号定时对 [JetBrainsRuntime](https://github.com/JetBrains/JetBrainsRuntime) 打[社区大佬的补丁](https://github.com/prehonor/myJetBrainsRuntime)进行改进并针对 Linux x64 平台提供编译产物。  
 
 ### 说明  
