@@ -19,12 +19,6 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-    - name: Install JDK20
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '20'
-
     - name: Clone Repository
       uses: actions/checkout@v3
 
@@ -69,6 +63,16 @@ jobs:
         echo "Ref: $ref"
         echo "ref=$ref" >> $GITHUB_OUTPUT
 
+        COMPILE_JDK=$(expr $JBSDK_VERSION - 1)
+        echo "compileJDK Version: $COMPILE_JDK"
+        echo "COMPILE_JDK=$COMPILE_JDK" >> $GITHUB_OUTPUT
+
+    - name: Install compileJDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '${{ steps.vars.outputs.COMPILE_JDK }}'
+  
     - name: Init Build Dependencies
       env:
         DEBIAN_FRONTEND: noninteractive
