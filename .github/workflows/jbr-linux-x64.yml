@@ -63,7 +63,8 @@ jobs:
         echo "Ref: $ref"
         echo "ref=$ref" >> $GITHUB_OUTPUT
 
-        COMPILE_JDK=$((JBSDK_VERSION - 1))
+        JDK_VERSION=$(sed -E 's/^([0-9]+).*$/\1/' <<< "$JBSDK_VERSION")
+        COMPILE_JDK=$((JDK_VERSION - 1))
         echo "compileJDK Version: $COMPILE_JDK"
         echo "COMPILE_JDK=$COMPILE_JDK" >> $GITHUB_OUTPUT
 
