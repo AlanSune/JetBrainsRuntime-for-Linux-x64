@@ -2,6 +2,7 @@
 原地址大佬目前没有继续更新，而github基于ubuntu18.04的workflow一直处于等待，无法生成新包。  
 本项目增加ubuntu20.04的支持，生成最新项目，可以在[release](https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases)页面下载使用。  
 ### 更新记录
+- 2023.09.09: 修复jdk17打包异常；调整定时打包时间为每周五。
 - 2023.09.04: 修改readme文档。
 - 2023.09.02: 支持jdk21打包；使用ubuntu20.04进行编译；每月1日自动打包。
 
