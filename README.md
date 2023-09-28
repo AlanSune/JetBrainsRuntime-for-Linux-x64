@@ -15,7 +15,8 @@
     - Markdown 文件无法正常预览  
 
 2. 使用方法（激进）：  
-    - 直接替换 IDE 安装目录下的 jbr 目录  
+    - 直接替换 IDE 安装目录下的 jbr 目录
+    - archlinux用户可以通过aur安装，然后在软件中切换java运行时即可，切换方法可以参照[此处](https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under)
 
 3. 特别提醒：
     - 由于是使用 master 分支的代码进行编译，如没有特殊需要**不建议使用 Pre-release 的包**，推荐使用已测试过的 [Latest-release](https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/releases/latest)
