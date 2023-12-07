@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - name: Clone Repository
       uses: actions/checkout@v3
@@ -55,6 +55,7 @@ jobs:
         echo "JBSDK_VERSION=$JBSDK_VERSION" >> $GITHUB_OUTPUT
         echo "Build Number: $build_number"
         echo "build_number=$build_number" >> $GITHUB_OUTPUT
+        echo "release_tag=ubuntu-22.04-$tag_name" >> $GITHUB_OUTPUT
 
         ref='${{ github.event.inputs.jbr_branch }}'
         if [[ -z "$ref" ]]; then
@@ -118,7 +119,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.vars.outputs.tag_name }}
+        tag_name: ${{ steps.vars.outputs.release_tag }}
         release_name:  ${{ steps.vars.outputs.release_name }}
         body: ${{ steps.vars.outputs.release_body }}
         draft: false
