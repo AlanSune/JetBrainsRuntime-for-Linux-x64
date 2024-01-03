@@ -2,6 +2,8 @@
 原地址大佬目前没有继续更新，而github基于ubuntu18.04的workflow一直处于等待，无法生成新包。  
 本项目增加ubuntu20.04的支持，生成最新项目，可以在[release](https://github.com/AlanSune/JetBrainsRuntime-for-Linux-x64/releases)页面下载使用。  
 ### 更新记录
+- 2024.1.3：
+    - 官方在2023.3.1版本修复了相关问题（[bug description](https://youtrack.jetbrains.com/issue/JBR-2460/Wrong-position-of-input-window-and-no-input-preview-with-fcitx-and-ubuntu-13.04)），此版本及以后无需修改jre来修复，感谢相关大佬的贡献，over :sparkles: :sparkles:
 - 2023.09.30:
     - 感谢 @jinzhongjia 补充archlinux用户切换方式，详见 **使用方法（激进）** 部分
     - 调整定时打包时间为每月1日
